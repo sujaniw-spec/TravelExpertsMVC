@@ -1,0 +1,116 @@
+﻿@model IEnumerable<TravelExpertsData.Models.Package>
+
+@{
+    ViewData["Title"] = "Index";
+}
+@if (TempData.Keys.Contains("Message"))
+{
+    <h4 class="bg-info text-center text-white p-2">
+        @TempData["Message"]
+    </h4>}
+
+@{
+    int counter = 0;
+}
+
+@if (Model.Count() > 0)
+{
+    <div class="container-fluid">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                @if (counter == 6)
+                {
+                    break;
+                }
+                else
+                {
+                    var imgName = item.PkgName.Split()[0];
+
+                    imgName = "/imgs/packages-pictures/" + imgName.ToString() + ".jpg";
+
+                    <div class="col-md-4">
+                        <div class="card mb-2">
+                            <img class="card-img-top" src=@(imgName) alt="Card image" />
+                            <div class="card-body">
+                                <h4 class="card-title">@Html.DisplayFor(modelItem => item.PkgName)</h4>
+                                <p class="card-text pkg-description"> @Html.DisplayFor(modelItem => item.PkgDesc)</p>
+                                <p class="card-text text-info"> @Html.DisplayFor(modelItem => item.PkgBasePrice)</p>
+                                <span class="card-text">From: @Html.DisplayFor(modelItem => item.PkgStartDate)</span>
+                                <span class="card-text">To: @Html.DisplayFor(modelItem => item.PkgEndDate)</span>
+                                <p class="text-left pt-3">
+                                    @Html.ActionLink("Package Details", "Details", new { id = item.PackageId }, new { @class = "btn btn-primary" })
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    counter++;
+                }
+            }
+        </div>
+    </div>
+
+
+}
+
+@*<table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.PackageId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PkgName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PkgStartDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PkgEndDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PkgDesc)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PkgBasePrice)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PkgAgencyCommission)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PackageId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PkgName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PkgStartDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PkgEndDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PkgDesc)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PkgBasePrice)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PkgAgencyCommission)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>*@

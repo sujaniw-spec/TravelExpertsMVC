@@ -1,0 +1,70 @@
+﻿@model TravelExpertsData.Models.BookingBookingDetailsModelView
+
+@{
+    ViewData["Title"] = "BuyPackage";
+}
+
+<h4>Buy Package:@ViewBag.Package.PkgDesc</h4>
+<h4>Destination: @ViewBag.Package.PkgName </h4>
+<h5>Total Price: @ViewBag.Package.PkgBasePrice.ToString("c") </h5>
+<h5>Start Date: @ViewBag.Package.PkgStartDate.ToString("d") </h5>
+<h5>End Date: @ViewBag.Package.PkgEndDate.ToString("d") </h5>
+
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="BuyPackage">
+            @{
+                var CustomerId = 104;
+                var PackageId = ViewBag.Package.PackageId;
+                var BasePrice = ViewBag.Package.PkgBasePrice;
+                var AgencyCommission = ViewBag.Package.PkgAgencyCommission;
+                var Destination = ViewBag.Package.PkgDesc;
+            }
+            <input type="hidden" asp-for="@CustomerId" />
+            <input type="hidden" asp-for="@PackageId" />
+            <input type="hidden" asp-for="@AgencyCommission" />
+            <input type="hidden" asp-for="@Destination" />
+            <input type="hidden" asp-for="@BasePrice" />
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="TravelerCount" class="control-label"></label>
+                <input asp-for="TravelerCount" class="form-control" />
+                <span asp-validation-for="TravelerCount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TripStart" class="control-label"></label>
+                <input asp-for="TripStart" class="form-control" />
+                <span asp-validation-for="TripStart" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TripEnd" class="control-label"></label>
+                <input asp-for="TripEnd" class="form-control" />
+                <span asp-validation-for="TripEnd" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TripTypeId" class="control-label ">Country</label>
+                <select asp-for="TripTypeId" class="form-control ">
+                    <option value="">---------Select Trip Type----------</option>
+                    <option value="B">Business</option>
+                    <option value="G">Group</option>
+                    <option value="L">Leisure</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="BUY" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index" class="btn btn-primary">Back to Packages</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

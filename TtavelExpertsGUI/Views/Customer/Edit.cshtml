@@ -1,0 +1,67 @@
+﻿@model TravelExpertsData.Models.Booking
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+
+
+<h4>Update My Booking</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @*<div class="form-group">
+                <label asp-for="BookingId" class="control-label">@Html.DisplayFor(model => model.BookingId)</label>
+                <input asp-for="BookingId" class="form-control" />
+                
+                <span asp-validation-for="BookingId" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <label asp-for="BookingDate" class="control-label">Booking Date</label>
+                <label asp-for="BookingDate" class="control-label">@Html.DisplayFor(model => model.BookingDate)</label>
+            </div>
+            <div class="form-group">
+                <label asp-for="BookingNo" class="control-label">BookingNo</label>
+                <label asp-for="BookingNo" class="control-label">@Html.DisplayFor(model => model.BookingNo)</label>
+            </div>
+            <div class="form-group">
+                <label asp-for="TravelerCount" class="control-label">Travellers Count </label>
+                <input asp-for="TravelerCount" class="form-control" />
+                <span asp-validation-for="TravelerCount" class="text-danger"></span>
+            </div>
+            @*<div class="form-group">
+                <label asp-for="CustomerId" class="control-label"></label>
+                <input asp-for="CustomerId" class="form-control" />
+                <span asp-validation-for="CustomerId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TripTypeId" class="control-label"></label>
+                <input asp-for="TripTypeId" class="form-control" />
+                <span asp-validation-for="TripTypeId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PackageId" class="control-label"></label>
+                <input asp-for="PackageId" class="form-control" />
+                <span asp-validation-for="PackageId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CancelFlag" class="control-label"></label>
+                <input asp-for="CancelFlag" class="form-control" />
+                <span asp-validation-for="CancelFlag" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <input type="submit" value="EDIT PACKAGE" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

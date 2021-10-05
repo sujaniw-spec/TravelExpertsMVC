@@ -1,0 +1,70 @@
+﻿@model TravelExpertsData.Models.Package
+
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+
+<div>
+    <h4>Package Details</h4>
+    <hr />
+    <dl class="row">
+        @*<dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.PackageId)
+            </dt>*@
+        @*<dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.PackageId)
+            </dd>*@
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PkgName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PkgName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PkgStartDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PkgStartDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PkgEndDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PkgEndDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PkgDesc)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PkgDesc)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PkgBasePrice)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PkgBasePrice)
+        </dd>
+
+
+        @*<dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.PkgAgencyCommission)
+            </dt>*@
+        @*<dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.PkgAgencyCommission)
+            </dd>*@
+    </dl>
+</div>
+
+@*@foreach (Product p in Model.Products)
+{
+    <option value="@p.">@p.Name</option>
+}*@
+
+<div>
+
+    @Html.ActionLink("Buy Package", "BuyPackage", new { id = Model.PackageId }, new { @class = "btn btn-primary" })
+
+    <a asp-action="Index" class="btn btn-primary">Back to packages</a>
+</div>
