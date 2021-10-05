@@ -34,7 +34,6 @@ namespace TravelExpertsGUI.Controllers
             }
             else // authenticated
             {
-                int ownerId = 0;// owner Id 0 means the manager
               //  if (usr.CustomerId!=null)// user is an owner                
                  //   ownerId = (int)usr.OwnerId;
                 HttpContext.Session.SetInt32("CurrentUser", usr.CustomerId);
