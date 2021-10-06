@@ -22,6 +22,10 @@ namespace TravelExpertsGUI.Controllers
             {
                 TempData["ReturnUrl"] = returnUrl; // preserve to come back to this page
             }
+            else
+            {
+                TempData["ReturnUrl"] = null;
+            }
             return View();
         }
 
@@ -67,7 +71,10 @@ namespace TravelExpertsGUI.Controllers
 
                 // if no return URl, go to the Index page of Rentals controller
                 if (TempData["ReturnUrl"] != null)
-                    return Redirect(TempData["ReturnUrl"].ToString());
+                {
+                    string returnUrl = TempData["ReturnUrl"].ToString();
+                    return Redirect(returnUrl);
+                }
                 else
                     return RedirectToAction("Index", "Package");
             }

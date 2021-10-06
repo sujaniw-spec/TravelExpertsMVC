@@ -15,6 +15,7 @@ namespace TravelExpertsData.Models
     {
         [Required]
         [Range(1, 20, ErrorMessage = "Travellers must not be zero or more than 20")]
+        [Display(Name = "Traveler Count")]
         public double? TravelerCount { get; set; }
         public int? CustomerId { get; set; }
 
@@ -23,12 +24,15 @@ namespace TravelExpertsData.Models
         public virtual Customer Customer { get; set; }
         public int? PackageId { get; set; }
 
-        [Column(TypeName = "datetime")]
+        [Required]
         [DisplayFormat(DataFormatString = "{0:M/d/yyyy}")]
+        [Display(Name = "Trip Start")]
         public DateTime? TripStart { get; set; }
 
+        [Required]
         [Column(TypeName = "datetime")]
         [DisplayFormat(DataFormatString = "{0:M/d/yyyy}")]
+        [Display(Name = "Trip End")]
         public DateTime? TripEnd { get; set; }
         [StringLength(255)]
         public string Destination { get; set; }
@@ -38,14 +42,17 @@ namespace TravelExpertsData.Models
         [DataType(DataType.Currency)]
         public decimal? BasePrice { get; set; }
         [Column(TypeName = "money")]
+        [Display(Name = "Agency Commission")]
         public decimal? AgencyCommission { get; set; }
 
+        [Required]
         public string TripTypeId { get; set; }
-
 
         [ForeignKey(nameof(PackageId))]
         [InverseProperty("Bookings")]
         public virtual Package Package { get; set; }
+
+
         [ForeignKey(nameof(TripTypeId))]
         [InverseProperty("Bookings")]
         public virtual TripType TripType { get; set; }

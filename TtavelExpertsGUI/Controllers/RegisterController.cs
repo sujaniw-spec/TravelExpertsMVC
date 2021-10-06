@@ -35,11 +35,24 @@ namespace TravelExpertsGUI.Controllers
         {
             try
             {
+                Customer newCustomer = new Customer();
+                newCustomer.CustFirstName = customer.CustFirstName;
+                newCustomer.CustLastName = customer.CustLastName;
+                newCustomer.CustEmail = customer.CustEmail;
+                newCustomer.CustPassword = customer.CustPassword;
+                newCustomer.CustAddress = "N/A";
+                newCustomer.CustCity = "N/A";
+                newCustomer.CustProv = "-";
+                newCustomer.CustPostal = "N/A";
+                newCustomer.CustBusPhone = "N/A";
+                newCustomer.AgentId = 1;
+                RegisterManager.RegisterNewUser(newCustomer);
 
-                return RedirectToAction(nameof(Index));
+                return View("RegisterSuccess", newCustomer);
             }
-            catch
+            catch(Exception e)
             {
+                TempData["Message"] = $"Error in Registration. Please Try again!";
                 return View();
             }
         }

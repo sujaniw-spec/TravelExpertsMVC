@@ -86,7 +86,7 @@ namespace TravelExpertsData.Models
             Customer customer = null;
             using (TravelExpertsContext db = new TravelExpertsContext())
             {
-                customer = db.Customers.ToList().FirstOrDefault(c=> c.CustEmail==email);
+                customer = db.Customers.Where(c=> c.CustEmail==email).FirstOrDefault();
             }
             return customer.CustomerId;
         }

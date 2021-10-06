@@ -23,7 +23,7 @@ namespace TravelExpertsData.Models
             Customer user = null;
             using (TravelExpertsContext db = new TravelExpertsContext())
             {
-                user = db.Customers.SingleOrDefault(u => u.CustEmail == email && u.CustPassword == password);
+                user = db.Customers.SingleOrDefault(u => u.CustEmail == email.Trim() && u.CustPassword == password.Trim());
             }
                 
             return user;
