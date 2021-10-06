@@ -28,13 +28,13 @@ namespace TravelExpertsData.Models
 
         [Column(TypeName = "datetime")]
         [DisplayFormat(DataFormatString = "{0:M/d/yyyy}")]
-        [Display(Name ="Start Date")]
+        [Display(Name ="Trip Start Date")]
         public DateTime? TripStart { get; set; }
 
 
         [Column(TypeName = "datetime")]
         [DisplayFormat(DataFormatString = "{0:M/d/yyyy}")]
-        [Display(Name ="End Date")]
+        [Display(Name ="Trip End Date")]
         public DateTime? TripEnd { get; set; }
 
         [StringLength(255)]

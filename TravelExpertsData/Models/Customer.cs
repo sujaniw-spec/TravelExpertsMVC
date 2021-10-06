@@ -21,10 +21,12 @@ namespace TravelExpertsData.Models
         [Key]
         [Display(Name = "Customer Id")]
         public int CustomerId { get; set; }
+
         [Required]
         [StringLength(25)]
         [Display(Name = "First Name")]
         public string CustFirstName { get; set; }
+
         [Required]
         [StringLength(25)]
         [Display(Name = "Last Name")]
@@ -32,9 +34,11 @@ namespace TravelExpertsData.Models
         [Required]
         [StringLength(75)]
         [Display(Name = "Address")]
+
         public string CustAddress { get; set; }
         [Required]
         [StringLength(50)]
+
         [Display(Name = "City")]
         public string CustCity { get; set; }
         [Required]
@@ -58,12 +62,22 @@ namespace TravelExpertsData.Models
 
         [Display(Name = "Business Phone")]
         public string CustBusPhone { get; set; }
+
         [Required]
         [StringLength(50)]
         [Display(Name = "Email")]
         public string CustEmail { get; set; }
+
+        [Required(ErrorMessage = "Please enter your password.")]
+        [Display(Name = "Password")]
         [StringLength(12)]
         public string CustPassword { get; set; }
+
+        [Required(ErrorMessage = "Please confirm your password.")]
+        [Display(Name = "Confirm Password")]
+        [NotMapped]
+        public string ConfirmPassword { get; set; }
+
 
         [Display(Name = "Agent Id")]
         public int? AgentId { get; set; }

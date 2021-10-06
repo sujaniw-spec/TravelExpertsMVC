@@ -8,6 +8,9 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using TravelExpertsData.Models;
 
+/*Purpose:Login Management
+ * Author:Sujani Wijesundera
+ */
 namespace TravelExpertsGUI.Controllers
 {
     public class AccountController : Controller
@@ -16,12 +19,11 @@ namespace TravelExpertsGUI.Controllers
         public IActionResult Login(string returnUrl = null)
         {
             if (returnUrl != null)
+            {
                 TempData["ReturnUrl"] = returnUrl; // preserve to come back to this page
+            }
             return View();
         }
-
-
-
 
         [HttpPost]
         public async Task<IActionResult> LoginAsync(Customer user)
@@ -34,16 +36,29 @@ namespace TravelExpertsGUI.Controllers
             }
             else // authenticated
             {
-              //  if (usr.CustomerId!=null)// user is an owner                
-                 //   ownerId = (int)usr.OwnerId;
-                HttpContext.Session.SetInt32("CurrentUser", usr.CustomerId);
+                var session = new UserSession(HttpContext.Session);
+                 HttpContext.Session.SetInt32("CurrentUser", usr.CustomerId);
+
+                int customerId = 0;// owner Id 0 means the manager
+                customerId = usr.CustomerId;
+                var model = new Customer();
+                {
+                    session.SetMyUser(usr);
+                    session.GetMyCustId();
+                };
 
                 List<Claim> claims = new List<Claim>()
                 {
                     new Claim(ClaimTypes.Name, usr.CustEmail),
-                    new Claim("CustFirstName", usr.CustFirstName),
-                  //  new Claim(ClaimTypes.Role, usr.Role)
+                    new Claim("CustomerId", customerId.ToString()),
+                  //  new Claim(ClaimTypes.Role, usr.CustomerId)
                 };
+
+             
+                
+                if (usr.CustomerId != null)// user is an owner                
+                    customerId = usr.CustomerId;
+                HttpContext.Session.SetInt32("CurrentOwner", customerId);
                 ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims, "Cookies"); // authentication type: Cookies
                 ClaimsPrincipal principal = new ClaimsPrincipal(claimsIdentity);
 
@@ -54,7 +69,7 @@ namespace TravelExpertsGUI.Controllers
                 if (TempData["ReturnUrl"] != null)
                     return Redirect(TempData["ReturnUrl"].ToString());
                 else
-                    return RedirectToAction("Index", "Rentals");
+                    return RedirectToAction("Index", "Package");
             }
         }//LoginAsync
 
@@ -64,82 +79,15 @@ namespace TravelExpertsGUI.Controllers
             // remove the authentication cookie
             await HttpContext.SignOutAsync("Cookies");
             HttpContext.Session.SetInt32("CurrentUser", 0);// no current owner
+            var session = new UserSession(HttpContext.Session);
+            session.RemoveMyUser();
             return RedirectToAction("Index", "Package");
         }// LogoutAsync
 
         public IActionResult AccessDenied()
         {
-            return View();
+            return View("AccessDenied");
         }
 
-
-        // GET: AccountController/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: AccountController/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: AccountController/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: AccountController/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: AccountController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: AccountController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: AccountController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
     }
 }

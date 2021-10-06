@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+
 namespace TravelExpertsGUI
 {
     public class Startup
@@ -30,7 +31,10 @@ namespace TravelExpertsGUI
 
             services.AddMemoryCache();
             services.AddSession();
+            services.AddControllersWithViews().AddNewtonsoftJson(); //Added new to add object
             services.AddControllersWithViews();
+        
+            services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -56,7 +60,7 @@ namespace TravelExpertsGUI
             app.UseAuthorization();
 
             app.UseSession();
-
+            
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

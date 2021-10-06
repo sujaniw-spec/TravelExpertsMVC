@@ -24,12 +24,12 @@ namespace TravelExpertsData.Models
         public string PkgName { get; set; }
         [Column(TypeName = "datetime")]
 
-        [Display(Name = "Start Date")]
+        [Display(Name = "Package Start Date")]
         [DisplayFormat(DataFormatString = "{0:M/d/yyyy}")]
         public DateTime? PkgStartDate { get; set; }
         [Column(TypeName = "datetime")]
 
-        [Display(Name = "End Date")]
+        [Display(Name = "Package End Date")]
         [DisplayFormat(DataFormatString = "{0:M/d/yyyy}")]
         public DateTime? PkgEndDate { get; set; }
         [StringLength(50)]

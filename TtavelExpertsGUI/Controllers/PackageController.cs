@@ -8,6 +8,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using TravelExpertsData.Models;
 
+/*Purpose: Package buying process
+ * Author:Sujani Wijesundera
+ */
+
 namespace TravelExpertsGUI.Controllers
 {
     public class PackageController : Controller
@@ -62,11 +66,17 @@ namespace TravelExpertsGUI.Controllers
             try
             {
                 //Create a booking
+                int? customerId = HttpContext.Session.GetInt32("CurrentOwner");
+                if (customerId == null && User != null && User.Identity != null && User.Identity.Name != null)
+                {
+                    customerId = CustomerManager.GetCustomerId(User.Identity.Name.ToString());
+                }
+
                 Booking booking = new Booking();
                 booking.BookingDate = DateTime.Today;
                 booking.BookingNo = RandomString(5); // random string for booking number
                 booking.CancelFlag = 0; //Not cancelled
-                booking.CustomerId = bookingVM.CustomerId;
+                booking.CustomerId = customerId;//bookingVM.CustomerId;
                 booking.PackageId = bookingVM.PackageId;
                 booking.TravelerCount = bookingVM.TravelerCount;
                 booking.TripTypeId = bookingVM.TripTypeId;
@@ -92,71 +102,6 @@ namespace TravelExpertsGUI.Controllers
             }
             return View("BuyPackageReceipt", bookingVM); // return the booking receipt
         }
-
-
-        // GET: PackageController/Create
-        //public ActionResult Create()
-        //{
-        //    return View();
-        //}
-
-        //// POST: PackageController/Create
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Create(IFormCollection collection)
-        //{
-        //    try
-        //    {
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //    catch
-        //    {
-        //        return View();
-        //    }
-        //}
-
-        //// GET: PackageController/Edit/5
-        //public ActionResult Edit(int id)
-        //{
-        //    return View();
-        //}
-
-        //// POST: PackageController/Edit/5
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Edit(int id, IFormCollection collection)
-        //{
-        //    try
-        //    {
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //    catch
-        //    {
-        //        return View();
-        //    }
-        //}
-
-        //// GET: PackageController/Delete/5
-        //public ActionResult Delete(int id)
-        //{
-        //    return View();
-        //}
-
-        //// POST: PackageController/Delete/5
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Delete(int id, IFormCollection collection)
-        //{
-        //    try
-        //    {
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //    catch
-        //    {
-        //        return View();
-        //    }
-        //}
-
 
         //Generate random string for booking number
         public static string RandomString(int length)

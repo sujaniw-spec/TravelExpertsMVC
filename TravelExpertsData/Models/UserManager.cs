@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+/*Purpose:User login and register managment
+ * Author:Sujani Wijesundera
+ */
 namespace TravelExpertsData.Models
 {
     public static class UserManager

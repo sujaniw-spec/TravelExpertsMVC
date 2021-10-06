@@ -99,6 +99,6 @@ namespace TravelExpertsData.Models
             }
             return package;
         }
-    
+
     }//class end
 }

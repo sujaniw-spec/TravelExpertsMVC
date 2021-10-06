@@ -16,7 +16,7 @@ namespace TravelExpertsData.Models
     {
 
         //Get my bookings list
-        public static List<Booking> GetMyPackages(int id)
+        public static List<Booking> GetMyPackages(int? id)
         {
             List<Booking> bookings = null;
             using(TravelExpertsContext db = new TravelExpertsContext())
@@ -73,6 +73,22 @@ namespace TravelExpertsData.Models
                 db.SaveChanges();
             }
             //return booking;
+        }
+
+
+        /// <summary>
+        /// Get Customer for given email
+        /// </summary>
+        /// <param name="email">email of the customer</param>
+        /// <returns>Returns a custId</returns>
+        public static int GetCustomerId(string email)
+        {
+            Customer customer = null;
+            using (TravelExpertsContext db = new TravelExpertsContext())
+            {
+                customer = db.Customers.ToList().FirstOrDefault(c=> c.CustEmail==email);
+            }
+            return customer.CustomerId;
         }
     }
 }
