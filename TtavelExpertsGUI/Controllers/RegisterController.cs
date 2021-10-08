@@ -35,6 +35,7 @@ namespace TravelExpertsGUI.Controllers
         {
             try
             {
+              //bool isExists = IsAlreadyExistEmail(customer.CustEmail);
                 Customer newCustomer = new Customer();
                 newCustomer.CustFirstName = customer.CustFirstName;
                 newCustomer.CustLastName = customer.CustLastName;
@@ -98,5 +99,33 @@ namespace TravelExpertsGUI.Controllers
                 return View();
             }
         }
+
+
+        /// <summary>
+        /// Email Address Validation
+        /// </summary>
+        /// <param name="EmailId"></param>
+        /// <returns>Return true or false</returns>
+        public bool IsAlreadyExistEmail(string CustEmail)
+        {
+            // Customer customer = new Customer();
+            Customer customer = UserManager.GetCustomerWithExistingingEmail(CustEmail);
+            bool status;
+
+            if (customer != null)
+            {
+                //Already registered  
+                status = false;
+            }
+            else
+            {
+                //Available to use  
+                status = true;
+            }
+
+            return status;
+
+        }
     }
 }
+

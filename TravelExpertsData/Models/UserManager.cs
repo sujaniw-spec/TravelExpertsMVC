@@ -28,5 +28,24 @@ namespace TravelExpertsData.Models
                 
             return user;
         }
+
+        /// <summary>
+        /// Get all the customers to check unique email address.
+        /// </summary>
+        /// <returns>Return customer</returns>
+        public static Customer GetCustomerWithExistingingEmail(string custemail)
+        {
+            Customer customer = new Customer();
+            List<Customer> list;
+            using (TravelExpertsContext db = new TravelExpertsContext())
+            {
+                list = db.Customers.ToList();
+
+                // customer = db.Customers.SingleOrDefault(c => c.CustEmail == custemail);
+            }
+
+            return customer;
+        }
+
     }//class end
 }

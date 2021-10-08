@@ -6,8 +6,8 @@
 }
 
 
-<div>
-    <h4>Package Details</h4>
+<div class="container travel-box">
+    <h4 class="text-center">Package Details</h4>
     <hr />
     <dl class="row">
         @*<dt class = "col-sm-2">
@@ -55,16 +55,11 @@
                 @Html.DisplayFor(model => model.PkgAgencyCommission)
             </dd>*@
     </dl>
-</div>
 
-@*@foreach (Product p in Model.Products)
-{
-    <option value="@p.">@p.Name</option>
-}*@
+    <div>
 
-<div>
+        @Html.ActionLink("Buy Package", "BuyPackage", new { id = Model.PackageId }, new { @class = "btn btn-primary" })
 
-    @Html.ActionLink("Buy Package", "BuyPackage", new { id = Model.PackageId }, new { @class = "btn btn-primary" })
-
-    <a asp-action="Index" class="btn btn-primary">Back to packages</a>
+        <a asp-action="Index" class="btn btn-primary">Back to packages</a>
+    </div>
 </div>

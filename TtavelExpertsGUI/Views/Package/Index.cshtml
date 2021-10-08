@@ -13,42 +13,56 @@
     int counter = 0;
 }
 
-@if (Model.Count() > 0)
-{
-    <div class="container-fluid">
-        <div class="row">
-            @foreach (var item in Model)
-            {
-                @if (counter == 6)
-                {
-                    break;
-                }
-                else
-                {
-                    var imgName = item.PkgName.Split()[0];
-
-                    imgName = "/imgs/packages-pictures/" + imgName.ToString() + ".jpg";
-
-                    <div class="col-md-4">
-                        <div class="card mb-2">
-                            <img class="card-img-top" src=@(imgName) alt="Card image" />
-                            <div class="card-body">
-                                <h4 class="card-title">@Html.DisplayFor(modelItem => item.PkgName)</h4>
-                                <p class="card-text pkg-description"> @Html.DisplayFor(modelItem => item.PkgDesc)</p>
-                                <p class="card-text text-info"> @Html.DisplayFor(modelItem => item.PkgBasePrice)</p>
-                                <span class="card-text">From: @Html.DisplayFor(modelItem => item.PkgStartDate)</span>
-                                <span class="card-text">To: @Html.DisplayFor(modelItem => item.PkgEndDate)</span>
-                                <p class="text-left pt-3">
-                                    @Html.ActionLink("Package Details", "Details", new { id = item.PackageId }, new { @class = "btn btn-primary" })
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    counter++;
-                }
-            }
+<div class="container-fluid">
+    <div class="row">
+        <div class="container-banner mb-2">
+            <img src="~/imgs/bg/banner.jpg" alt="Banner" class="image-banner" />
+            <p class="overlay">Book your Travel Package Today!</p>
         </div>
     </div>
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4 text-info text-center"><h4>Select Your Package</h4></div>
+        <div class="col-md-4"></div>
+    </div>
+</div>
+
+    @if (Model.Count() > 0)
+    {
+        <div class="container-fluid">
+            <div class="row">
+                @foreach (var item in Model)
+                {
+                    @if (counter == 6)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        var imgName = item.PkgName.Split()[0];
+
+                        imgName = "/imgs/packages-pictures/" + imgName.ToString() + ".jpg";
+
+                        <div class="col-md-4">
+                            <div class="card mb-2">
+                                <img class="card-img-top" src=@(imgName) alt="Card image" />
+                                <div class="card-body">
+                                    <h4 class="card-title text-info">@Html.DisplayFor(modelItem => item.PkgName)</h4>
+                                    <p class="card-text pkg-description"> @Html.DisplayFor(modelItem => item.PkgDesc)</p>
+                                    <p class="card-text text-info"> @Html.DisplayFor(modelItem => item.PkgBasePrice)</p>
+                                    <span class="card-text">From: @Html.DisplayFor(modelItem => item.PkgStartDate)</span>
+                                    <span class="card-text">To: @Html.DisplayFor(modelItem => item.PkgEndDate)</span>
+                                    <p class="text-left pt-3">
+                                        @Html.ActionLink("Package Details", "Details", new { id = item.PackageId }, new { @class = "btn btn-primary" })
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        counter++;
+                    }
+                }
+            </div>
+        </div>
 
 
-}
+    }

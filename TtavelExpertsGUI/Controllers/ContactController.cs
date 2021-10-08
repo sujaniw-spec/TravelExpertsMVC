@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TravelExpertsData.Models;
 
 
 /*Purpose: Contact Us - retrive Agenices and agency contacts
@@ -16,7 +17,16 @@ namespace TravelExpertsGUI.Controllers
         // GET: ContactController
         public ActionResult Index()
         {
-            return View();
+            List<Agent> agents = ContactUsManager.GetAgents();
+            List<Agency> agencies = ContactUsManager.GetAgencies();
+
+            var AgencyAgentsModelView = new AgencyAgentsModelView
+            {
+                Agents = agents,
+                Agencies = agencies
+            };
+           
+            return View(AgencyAgentsModelView);
         }
 
         // GET: ContactController/Details/5

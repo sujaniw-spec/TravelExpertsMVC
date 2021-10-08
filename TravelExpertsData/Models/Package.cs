@@ -20,21 +20,21 @@ namespace TravelExpertsData.Models
         public int PackageId { get; set; }
         [Required]
         [StringLength(50)]
-        [Display(Name = "Package Name")]
+        [Display(Name = "Name")]
         public string PkgName { get; set; }
         [Column(TypeName = "datetime")]
 
-        [Display(Name = "Package Start Date")]
+        [Display(Name = "Start Date")]
         [DisplayFormat(DataFormatString = "{0:M/d/yyyy}")]
         public DateTime? PkgStartDate { get; set; }
         [Column(TypeName = "datetime")]
 
-        [Display(Name = "Package End Date")]
+        [Display(Name = "End Date")]
         [DisplayFormat(DataFormatString = "{0:M/d/yyyy}")]
         public DateTime? PkgEndDate { get; set; }
         [StringLength(50)]
 
-        [Display(Name = "Package Description")]
+        [Display(Name = "Description")]
         public string PkgDesc { get; set; }
         [Column(TypeName = "money")]
 

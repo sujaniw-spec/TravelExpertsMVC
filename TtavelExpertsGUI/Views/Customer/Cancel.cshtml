@@ -3,66 +3,43 @@
 @{
     ViewData["Title"] = "Cancel";
 }
+<div class="container travel-box">
+    <h4>Cancel Booking</h4>
 
-<h1>Cancel Booking</h1>
+    <h3 class="text-danger">Are you sure you want to Cancel this?</h3>
+    <div>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.BookingId)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.BookingId)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.BookingDate)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.BookingDate)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.BookingNo)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.BookingNo)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.TravelerCount)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.TravelerCount)
+            </dd>
+        </dl>
 
-<h3>Are you sure you want to Cancel this?</h3>
-<div>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.BookingId)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.BookingId)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.BookingDate)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.BookingDate)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.BookingNo)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.BookingNo)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.TravelerCount)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.TravelerCount)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CustomerId)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CustomerId)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.TripTypeId)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.TripTypeId)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.PackageId)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.PackageId)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CancelFlag)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CancelFlag)
-        </dd>
-    </dl>
-    
-    <form asp-action="Cancel">
-        <input type="submit" value="Cancel" class="btn btn-danger" 
-               onclick = "return confirm('Are you sure you wish to cancel this booking?');" />
-        <a asp-action="Index" class="btn btn-primary">Back to List</a>
-    </form>
+        <form asp-action="Cancel">
+            <input type="submit" value="Cancel" class="btn btn-primary"
+                   onclick="return confirm('Are you sure you wish to cancel this booking?');" />
+            <a asp-action="Index" class="btn btn-primary">Back to List</a>
+        </form>
+    </div>
 </div>

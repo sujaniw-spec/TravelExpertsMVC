@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 #nullable disable
@@ -66,6 +67,8 @@ namespace TravelExpertsData.Models
         [Required]
         [StringLength(50)]
         [Display(Name = "Email")]
+        //Using Remote validation attribute   
+        [Remote("IsAlreadyExistEmail", "Customer", ErrorMessage = "Email address already in use.")]
         public string CustEmail { get; set; }
 
         [Required(ErrorMessage = "Please enter your password.")]

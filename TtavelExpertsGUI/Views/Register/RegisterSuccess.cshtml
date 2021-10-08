@@ -4,21 +4,22 @@
     ViewData["Title"] = "Register Success";
 }
 
+<div class="container travel-box">
 
+    <h5 class="text-center text-success">@Html.DisplayFor(model => model.CustFirstName),  You are Successfully Registerd.</h5>
+    <div>
 
-<h5 class="text-center">@Html.DisplayFor(model => model.CustFirstName)  You are Successfully Registerd.</h5>
-<div>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                User Name:
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.CustEmail)
+            </dd>
 
-    <hr />
-    <dl class="row">
-       
-         <dt class = "col-sm-2">
-        User Name:
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CustEmail)
-        </dd>
-      
-    </dl>
-     
+        </dl>
+
+    </div>
+
 </div>

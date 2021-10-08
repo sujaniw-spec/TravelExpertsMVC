@@ -2,20 +2,38 @@
 @{
     ViewData["Title"] = "Login";
 }
-
-<form asp-action="Login">
-    <table>
-        <tr>
-            <td>Username: </td>
-            <td><input type="email" asp-for="CustEmail" /></td>
-        </tr>
-        <tr>
-            <td>Password: </td>
-            <td><input type="password" asp-for="CustPassword" /></td>
-        </tr>
-        <tr>
-            <td colspan="2" align="right"><input type="submit" value="SIGN IN" class="btn btn-primary mt-2" /></td>
-        </tr>
-    </table>
-</form>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 travel-box offset-md-2">
+            <div class="text-center">
+                <form asp-action="Login">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <table>
+                        <tr>
+                            <td class="col-form-label">Username: </td>
+                            <td><input type="email" asp-for="CustEmail" class="form-control" required /></td>
+                            <td><span asp-validation-for="CustEmail" class="text-danger"></span></td>
+                        </tr>
+                        <tr>
+                            <td class="col-form-label">Password: </td>
+                            <td><input type="password" asp-for="CustPassword" class="form-control" required /></td>
+                            <td><span asp-validation-for="CustPassword" class="text-danger"></span></td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" align="right" class="mt-2 mb-2">
+                                New User?
+                                @Html.ActionLink("Register", "Register", "Register")
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" align="right">
+                                <input type="submit" value="SIGN IN" class="btn btn-primary mt-2" />
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 

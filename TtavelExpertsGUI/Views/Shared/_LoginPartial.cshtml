@@ -5,7 +5,7 @@
         var session = new TravelExpertsData.Models.UserSession(Context.Session);
 
         <li class="nav-item">
-            <a class="nav-link text-success" asp-controller="Customer" asp-action="Index" title="Welcome">
+            <a class="nav-link text-info" asp-controller="Customer" asp-action="Index" title="Welcome">
                 Welcome @*@session.GetMyUser().CustFirstName*@ @User.Identity.Name
             </a>
         </li>

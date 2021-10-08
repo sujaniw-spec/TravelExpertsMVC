@@ -77,3 +77,67 @@ body {
 .pkg-description{
     font-size:14px;
 }
+
+.bg-contact-header {
+    background-color: #e4f1ff !important;
+}
+
+/*Banner*/
+* {
+    box-sizing: border-box
+}
+
+/* Container needed to position the overlay. Adjust the width as needed */
+.container-banner {
+    position: relative;
+}
+
+/* Make the image to responsive */
+.image-banner {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* The overlay effect - lays on top of the container and over the image */
+.overlay {
+    position: absolute;
+    top: 0;
+    /*background: rgb(0, 0, 0);
+    background: rgba(0, 0, 0, 0.5);*/ /* Black see-through */
+    color: #f1f1f1;
+    width: 100%;
+    transition: .5s ease;
+    opacity: 0;
+    color: white;
+    font-size: 40px;
+    padding: 50px;
+    text-align: center;
+    opacity: 1;
+}
+
+.travel-box {
+    margin-bottom: 40px;
+    background: #fff;
+    border: #D9E5D6 solid 1px;
+    border-radius: 10px;
+    padding: 70px;
+    box-shadow: 0 14px 28px rgb(0 0 0 / 25%), 0 10px 10px rgb(0 0 0 / 22%);
+}
+
+.travel-box-light {
+    margin-bottom: 40px;
+    background: #fff;
+    border: #D9E5D6 solid 1px;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 14px 28px rgb(0 0 0 / 25%), 0 10px 10px rgb(0 0 0 / 22%);
+}
+
+h4 {
+    color: #17a2b8 !important;
+}
+
+.table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
+    background-color: #f5f8f8 !important;
+}

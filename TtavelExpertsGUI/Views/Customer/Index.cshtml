@@ -4,109 +4,110 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>My Bookings</h1>
 
-<table class="table table-bordered table-striped">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.BookingId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.BookingDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.BookingNo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TravelerCount)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.BookingDetails.GetEnumerator().Current.TripStart)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.BookingDetails.GetEnumerator().Current.TripEnd)
-            </th>
-            <th>
-            @Html.DisplayNameFor(model => model.Package.PkgStartDate)
-        </th>
-            @*<th>
-            @Html.DisplayNameFor(model => model.CustomerId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TripTypeId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PackageId)
-        </th>*@
-            @*<th>
-            @Html.DisplayNameFor(model => model.CancelFlag)
-        </th>*@
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.BookingId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BookingDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BookingNo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TravelerCount)
-            </td>
-            <td>
-                @foreach (var bd in item.BookingDetails)
-                {
-                    @Html.DisplayFor(modelItem => bd.TripStart)
-                }
-
-            </td>
-            <td>
-                @foreach (var bd in item.BookingDetails)
-                {
-                    @Html.DisplayFor(modelItem => bd.TripEnd)
-                }
-
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Package.PkgStartDate)
-            </td>
-            @*<td>
-            @Html.DisplayFor(modelItem => item.TripTypeId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PackageId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CancelFlag)
-        </td>*@
-            <td>
-
-                @if (item.Package.PkgStartDate >= DateTime.Now)
-                {
-                    if (item.CancelFlag == 0)
+@if (Model.Count() > 0)
+{
+    <div class="container-fluid">
+        <div class="row travel-box-light">
+            <h4 class="col-md-12 text-center">My Bookings</h4>
+            <table class="table table-bordered table-striped text-info">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.BookingId)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.BookingDate)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.BookingNo)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.TravelerCount)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.BookingDetails.GetEnumerator().Current.TripStart)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.BookingDetails.GetEnumerator().Current.TripEnd)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Package.PkgName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Package.PkgStartDate)
+                        </th>
+                     <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
                     {
-                        @Html.ActionLink("Edit", "Edit", new { id = item.BookingId }, new { @class = "btn btn-primary mr-2" })
-                        @Html.ActionLink("Cancel", "Cancel", new { id = item.BookingId }, new { @class = "btn btn-primary" })
-                    }
-                    else
-                    {
-                        <text>Cancelled</text>
-                    }
-                }
-                else
-                {
-                    <text>Package Already Started</text>
-                }
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.BookingId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.BookingDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.BookingNo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TravelerCount)
+                        </td>
+                        <td>
+                            @foreach (var bd in item.BookingDetails)
+                            {
+                                @Html.DisplayFor(modelItem => bd.TripStart)
+                            }
 
-            </td>
-        </tr>
+                        </td>
+                        <td>
+                            @foreach (var bd in item.BookingDetails)
+                            {
+                                @Html.DisplayFor(modelItem => bd.TripEnd)
+                            }
+
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Package.PkgName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Package.PkgStartDate)
+                        </td>
+                        <td>
+
+                            @if (item.Package.PkgStartDate >= DateTime.Now)
+                            {
+                                if (item.CancelFlag == 0)
+                                {
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.BookingId }, new { @class = "btn btn-primary mr-2" })
+                                    @Html.ActionLink("Cancel", "Cancel", new { id = item.BookingId }, new { @class = "btn btn-primary" })
+                                }
+                                else
+                                {
+                                    <span class="text-danger">Cancelled</span>
+                                }
+                            }
+                            else
+                            {
+                                <span class="text-success">Package Already Started</span>
+                            }
+
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
 }
-    </tbody>
-</table>
+else
+{
+<div class="container travel-box">
+    <div class="alert alert-info mb-5">No Packages are available. Please buy a Package.</div>
+    <a asp-action="Index" asp-controller="Package" class="btn btn-primary">Back to packages</a>
+</div>
+}
+

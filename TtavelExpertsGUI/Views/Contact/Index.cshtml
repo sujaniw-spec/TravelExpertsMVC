@@ -1,0 +1,50 @@
+﻿@model TravelExpertsData.Models.AgencyAgentsModelView
+
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="container">
+    <div class="row travel-box-light">
+        <div class="col-md-12 offset-md-4">
+            <h4 class="text-info">Agency Locations</h4>
+        </div>
+
+        @foreach (var agnecy in Model.Agencies)
+        {
+            <div class="col-md-6">
+                <div class="mb-2">
+                    <div class="card-header bg-contact-header">
+
+                        Address:
+                        @agnecy.AgncyAddress
+                        @agnecy.AgncyCity @agnecy.AgncyProv
+                        @agnecy.AgncyCountry
+                        @agnecy.AgncyPostal
+                        <br />
+                        Phone: @agnecy.AgncyPhone
+                        <br />
+                        Fax: @agnecy.AgncyFax
+                    </div>
+                </div>
+
+                <ul class="list-group">
+
+                    @foreach (var agent in Model.Agents.Where(a => a.AgencyId == agnecy.AgencyId))
+                    {
+                        <li class="list-group-item text-info">
+                            @agent.AgtFirstName
+                            @agent.AgtLastName
+                            <br />
+                            @agent.AgtEmail
+                            <br />
+                            @agent.AgtBusPhone
+                            <br />
+                            @agent.AgtPosition
+                        </li>
+                    }
+                </ul>
+            </div>
+        }
+    </div>
+</div>
+
