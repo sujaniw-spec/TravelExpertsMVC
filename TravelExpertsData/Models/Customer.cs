@@ -73,11 +73,14 @@ namespace TravelExpertsData.Models
 
         [Required(ErrorMessage = "Please enter your password.")]
         [Display(Name = "Password")]
-        [StringLength(12)]
+       // [StringLength(12)]
+        //[Range(5,12)]
         public string CustPassword { get; set; }
 
         [Required(ErrorMessage = "Please confirm your password.")]
         [Display(Name = "Confirm Password")]
+      //  [StringLength(12)]
+        [Compare("CustPassword")]
         [NotMapped]
         public string ConfirmPassword { get; set; }
 

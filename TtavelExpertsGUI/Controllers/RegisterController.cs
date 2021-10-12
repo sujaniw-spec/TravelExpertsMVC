@@ -7,99 +7,64 @@ using System.Threading.Tasks;
 using TravelExpertsData.Models;
 
 
-/* Purpose:Register new account
+/* Purpose:Register new user account
  * Author:Sujani Wijesundera
  */
 namespace TravelExpertsGUI.Controllers
 {
     public class RegisterController : Controller
     {
+
+        /// <summary>
+        /// Returns the view to user registration
+        /// </summary>
+        /// <returns></returns>
         // GET: RegisterController
         public ActionResult Register()
         {
             return View();
         }
 
-        // GET: RegisterController/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        
+        /// <summary>
+        /// Register new user and send data to the database
+        /// </summary>
+        /// <param name="customer">Customer object</param>
+        /// <returns>View with success message or if error return to the same page</returns>         
         // POST: RegisterController/Create
-        //Register new user
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Register(Customer customer)
         {
             try
             {
-              //bool isExists = IsAlreadyExistEmail(customer.CustEmail);
-                Customer newCustomer = new Customer();
-                newCustomer.CustFirstName = customer.CustFirstName;
-                newCustomer.CustLastName = customer.CustLastName;
-                newCustomer.CustEmail = customer.CustEmail;
-                newCustomer.CustPassword = customer.CustPassword;
-                newCustomer.CustAddress = "N/A";
-                newCustomer.CustCity = "N/A";
-                newCustomer.CustProv = "-";
-                newCustomer.CustPostal = "N/A";
-                newCustomer.CustBusPhone = "N/A";
-                newCustomer.AgentId = 1;
-                RegisterManager.RegisterNewUser(newCustomer);
+                    //bool isExists = IsAlreadyExistEmail(customer.CustEmail);
+                    Customer newCustomer = new Customer();
+                    newCustomer.CustFirstName = customer.CustFirstName;
+                    newCustomer.CustLastName = customer.CustLastName;
+                    newCustomer.CustEmail = customer.CustEmail;
+                    newCustomer.CustPassword = customer.CustPassword;
+                    newCustomer.CustAddress = "N/A"; //no values taken from the interface
+                    newCustomer.CustCity = "N/A";
+                    newCustomer.CustProv = "-";
+                    newCustomer.CustPostal = "N/A";
+                    newCustomer.CustBusPhone = "N/A";
+                    newCustomer.AgentId = 1;
+                    if(customer.CustPassword == null || customer.CustPassword.Trim().Length==0 || customer.CustPassword.Length<5)
+                {
+                    return View();
+                }
+                    RegisterManager.RegisterNewUser(newCustomer);
 
-                return View("RegisterSuccess", newCustomer);
+                    return View("RegisterSuccess", newCustomer);
+                //}
             }
             catch(Exception e)
             {
                 TempData["Message"] = $"Error in Registration. Please Try again!";
                 return View();
             }
+            //return View();
         }
-
-        // GET: RegisterController/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: RegisterController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: RegisterController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: RegisterController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
 
         /// <summary>
         /// Email Address Validation

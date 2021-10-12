@@ -36,12 +36,9 @@ namespace TravelExpertsData.Models
         public static Customer GetCustomerWithExistingingEmail(string custemail)
         {
             Customer customer = new Customer();
-            List<Customer> list;
             using (TravelExpertsContext db = new TravelExpertsContext())
             {
-                list = db.Customers.ToList();
-
-                // customer = db.Customers.SingleOrDefault(c => c.CustEmail == custemail);
+                customer = db.Customers.SingleOrDefault(c => c.CustEmail == custemail);
             }
 
             return customer;

@@ -27,7 +27,7 @@
     </div>
 </div>
 
-    @if (Model.Count() > 0)
+    @if (Model.Count() > 0) @*if packages available*@
     {
         <div class="container-fluid">
             <div class="row">
@@ -39,9 +39,9 @@
                     }
                     else
                     {
-                        var imgName = item.PkgName.Split()[0];
+                        var imgName = item.PkgName.Split()[0]; /*take the first name of the package to get the image*/
 
-                        imgName = "/imgs/packages-pictures/" + imgName.ToString() + ".jpg";
+                        imgName = "/imgs/packages-pictures/" + imgName.ToString() + ".jpg"; /*make the image*/
 
                         <div class="col-md-4">
                             <div class="card mb-2">

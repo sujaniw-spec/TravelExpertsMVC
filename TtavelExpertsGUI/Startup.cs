@@ -34,7 +34,7 @@ namespace TravelExpertsGUI
             services.AddControllersWithViews().AddNewtonsoftJson(); //Added new to add object
             services.AddControllersWithViews();
         
-            services.AddMvc();
+           // services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -56,7 +56,7 @@ namespace TravelExpertsGUI
 
             app.UseRouting();
 
-            app.UseAuthentication(); // add this
+            app.UseAuthentication(); // add this login managment
             app.UseAuthorization();
 
             app.UseSession();
@@ -65,7 +65,7 @@ namespace TravelExpertsGUI
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Package}/{action=Index}/{id?}");
+                    pattern: "{controller=Package}/{action=Index}/{id?}"); // Home page
             });
         }
     }

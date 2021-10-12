@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-/*Purpose:Manage user registration.
+/*Purpose:Manage user registration. Add new user to the database and check the email address already exists in the database
  * Author:Sujani Wijesundera
  * date:06/10/2021
  */
@@ -38,8 +38,6 @@ namespace TravelExpertsData.Models
             using (TravelExpertsContext db = new TravelExpertsContext())
             {
                 list = db.Customers.ToList();
-
-               // customer = db.Customers.SingleOrDefault(c => c.CustEmail == custemail);
             }
                 
             return customer;

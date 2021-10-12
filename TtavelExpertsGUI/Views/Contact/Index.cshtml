@@ -1,4 +1,9 @@
-﻿@model TravelExpertsData.Models.AgencyAgentsModelView
+﻿@*Purpose: Display agencies and agents relavants to agencies
+    Name:Sujani Wijesundera
+    reference:https://www.c-sharpcorner.com/article/managing-data-with-viewmodel-in-asp-net-mvc/
+*@
+
+@model TravelExpertsData.Models.AgencyAgentsModelView
 
 @{
     ViewData["Title"] = "Index";
@@ -9,7 +14,7 @@
             <h4 class="text-info">Agency Locations</h4>
         </div>
 
-        @foreach (var agnecy in Model.Agencies)
+        @foreach (var agnecy in Model.Agencies)@*Display Agencies*@
         {
             <div class="col-md-6">
                 <div class="mb-2">
@@ -29,7 +34,7 @@
 
                 <ul class="list-group">
 
-                    @foreach (var agent in Model.Agents.Where(a => a.AgencyId == agnecy.AgencyId))
+                    @foreach (var agent in Model.Agents.Where(a => a.AgencyId == agnecy.AgencyId))@*Show the agents*@
                     {
                         <li class="list-group-item text-info">
                             @agent.AgtFirstName

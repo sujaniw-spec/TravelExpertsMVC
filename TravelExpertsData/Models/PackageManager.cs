@@ -4,6 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
+/*Purpose: Helpto create a booking view and send booking data to the database
+ * Author: Sujani Wijesundera
+ */
 namespace TravelExpertsData.Models
 {
     public static class PackageManager
@@ -51,7 +55,10 @@ namespace TravelExpertsData.Models
             return listTripTypes;
         }
 
-        //Add booking to the table
+        /// <summary>
+        /// Add customer booking to the table
+        /// </summary>
+        /// <param name="booking">Booking object</param>
         public static void AddCustomerBooking(Booking booking)
         {
             using (TravelExpertsContext db = new TravelExpertsContext())
@@ -61,21 +68,10 @@ namespace TravelExpertsData.Models
             }
         }
 
-
-        public static PackagesProductsSupplier GetProductSupplier(int? id)
-        {
-            PackagesProductsSupplier prodsup = null;
-            using (TravelExpertsContext db = new TravelExpertsContext())
-            {
-
-                prodsup = db.PackagesProductsSuppliers.Where(pp=> pp.PackageId == id).FirstOrDefault();
-
-            }
-            return prodsup;
-        }
-
-
-        //Add record to the booking details
+       /// <summary>
+       /// Add record to the booking details table
+       /// </summary>
+       /// <param name="bookingDetail">BookingDetail object</param>
         public static void AddCustomerBookingDetails(BookingDetail bookingDetail)
         {
             using (TravelExpertsContext db = new TravelExpertsContext())
@@ -83,6 +79,24 @@ namespace TravelExpertsData.Models
                 db.Add(bookingDetail);
                 db.SaveChanges();
             }
+        }
+
+
+        /// <summary>
+        /// Get  the product supplier relavant to the package
+        /// </summary>
+        /// <param name="id">id</param>
+        /// <returns>Product supplier object</returns>
+        public static PackagesProductsSupplier GetProductSupplier(int? id)
+        {
+            PackagesProductsSupplier prodsup = null;
+            using (TravelExpertsContext db = new TravelExpertsContext())
+            {
+
+                prodsup = db.PackagesProductsSuppliers.Where(pp => pp.PackageId == id).FirstOrDefault();
+
+            }
+            return prodsup;
         }
 
         /// <summary>

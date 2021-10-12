@@ -15,87 +15,23 @@ namespace TravelExpertsGUI.Controllers
     public class ContactController : Controller
     {
         // GET: ContactController
+
+        /// <summary>
+        /// Display agents and agencies in the contact us index page
+        /// </summary>
+        /// <returns>View with agency view model</returns>
         public ActionResult Index()
         {
-            List<Agent> agents = ContactUsManager.GetAgents();
-            List<Agency> agencies = ContactUsManager.GetAgencies();
+            List<Agent> agents = ContactUsManager.GetAgents(); //get all agents
+            List<Agency> agencies = ContactUsManager.GetAgencies(); //get all agencies
 
-            var AgencyAgentsModelView = new AgencyAgentsModelView
+            var AgencyAgentsModelView = new AgencyAgentsModelView //create a new object of view model
             {
-                Agents = agents,
-                Agencies = agencies
+                Agents = agents, //set agents list
+                Agencies = agencies //set agencies list
             };
            
-            return View(AgencyAgentsModelView);
-        }
-
-        // GET: ContactController/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: ContactController/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: ContactController/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: ContactController/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: ContactController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: ContactController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: ContactController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            return View(AgencyAgentsModelView); //returns the view model
         }
     }
 }

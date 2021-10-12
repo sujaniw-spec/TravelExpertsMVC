@@ -1,4 +1,7 @@
-﻿@model TravelExpertsData.Models.Package
+﻿@*Purpose:Display the package details
+Author:Sujani Wijesundera*@
+
+@model TravelExpertsData.Models.Package
 
 
 @{
@@ -10,12 +13,6 @@
     <h4 class="text-center">Package Details</h4>
     <hr />
     <dl class="row">
-        @*<dt class = "col-sm-2">
-                @Html.DisplayNameFor(model => model.PackageId)
-            </dt>*@
-        @*<dd class = "col-sm-10">
-                @Html.DisplayFor(model => model.PackageId)
-            </dd>*@
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.PkgName)
         </dt>
@@ -46,14 +43,6 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.PkgBasePrice)
         </dd>
-
-
-        @*<dt class = "col-sm-2">
-                @Html.DisplayNameFor(model => model.PkgAgencyCommission)
-            </dt>*@
-        @*<dd class = "col-sm-10">
-                @Html.DisplayFor(model => model.PkgAgencyCommission)
-            </dd>*@
     </dl>
 
     <div>

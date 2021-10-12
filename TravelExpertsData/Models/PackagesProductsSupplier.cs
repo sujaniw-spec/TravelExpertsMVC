@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 #nullable disable
 
+
 namespace TravelExpertsData.Models
 {
     [Table("Packages_Products_Suppliers")]

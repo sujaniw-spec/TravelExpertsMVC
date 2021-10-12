@@ -1,11 +1,14 @@
-﻿@model IEnumerable<TravelExpertsData.Models.Booking>
+﻿@*Purpose:Display all packages that customer bought
+Name:Sujani Wijesundera*@
+
+@model IEnumerable<TravelExpertsData.Models.Booking>
 
 @{
     ViewData["Title"] = "Index";
 }
 
 
-@if (Model.Count() > 0)
+@if (Model.Count() > 0)  @*if my packages exists*@
 {
     <div class="container-fluid">
         <div class="row travel-box-light">
@@ -78,19 +81,19 @@
                         </td>
                         <td>
 
-                            @if (item.Package.PkgStartDate >= DateTime.Now)
+                            @if (item.Package.PkgStartDate >= DateTime.Now) @*check whether the package start date already pass or not*@
                             {
-                                if (item.CancelFlag == 0)
+                                if (item.CancelFlag == 0) /*checked package already cancel or not*/
                                 {
                                     @Html.ActionLink("Edit", "Edit", new { id = item.BookingId }, new { @class = "btn btn-primary mr-2" })
                                     @Html.ActionLink("Cancel", "Cancel", new { id = item.BookingId }, new { @class = "btn btn-primary" })
                                 }
-                                else
+                                else /*otherwise display "cancelled" in package*/
                                 {
                                     <span class="text-danger">Cancelled</span>
                                 }
                             }
-                            else
+                            else /*if package start date is less tahn the today dispaly following message*/
                             {
                                 <span class="text-success">Package Already Started</span>
                             }
@@ -103,7 +106,7 @@
         </div>
     </div>
 }
-else
+else  /*if customer does not have packages*/
 {
 <div class="container travel-box">
     <div class="alert alert-info mb-5">No Packages are available. Please buy a Package.</div>

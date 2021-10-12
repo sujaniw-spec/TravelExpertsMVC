@@ -4,6 +4,10 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 #nullable disable
 
+/* Database configuration class
+ * Author:Sujani Wijesundera
+ */
+
 namespace TravelExpertsData.Models
 {
     public partial class TravelExpertsContext : DbContext

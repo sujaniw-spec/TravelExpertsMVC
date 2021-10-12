@@ -1,9 +1,12 @@
-﻿@model TravelExpertsData.Models.BookingBookingDetailsModelView
+﻿@*Purpose:Page for buying package
+Author:Sujani Wijesundera*@
+
+@model TravelExpertsData.Models.BookingBookingDetailsModelView
 
 @{
     ViewData["Title"] = "BuyPackage";
 }
-<div class="container travel-box">
+<div class="container travel-box"> @*display package details*@
     <div class="alert alert-primary" role="alert">
         <h5>@ViewBag.Package.PkgDesc</h5>
         <h5>Destination: @ViewBag.Package.PkgName </h5>
@@ -20,17 +23,17 @@
             <form asp-action="BuyPackage">
                 @{
 
-                    var session = new TravelExpertsData.Models.UserSession(Context.Session);
+                    var session = new TravelExpertsData.Models.UserSession(Context.Session); /*Get user id from session. Can get this from controller class too*/
 
 
-                    var CustomerId = session.GetMyCustId();
+                    var CustomerId = session.GetMyCustId(); /*Get customer the customer id from session*/
                     var PackageId = ViewBag.Package.PackageId;
                     var BasePrice = ViewBag.Package.PkgBasePrice;
                     var AgencyCommission = ViewBag.Package.PkgAgencyCommission;
                     var Destination = ViewBag.Package.PkgDesc;
 
                 }
-                <input type="hidden" asp-for="@CustomerId" />
+                <input type="hidden" asp-for="@CustomerId" /> @*send information hidden to the controller*@
                 <input type="hidden" asp-for="@PackageId" />
 
                 <input type="hidden" asp-for="@AgencyCommission" />

@@ -9,13 +9,17 @@ using Microsoft.EntityFrameworkCore;
 namespace TravelExpertsData.Models
 {
 
-    /* Purpose:Customer view and modify package information
+    /* Purpose:Manage customer package information. Modify and cancelown packages
      * Author: Sujani Wijesundera
      */
     public static class CustomerManager
     {
 
-        //Get my bookings list
+       /// <summary>
+       /// Get all the my pacakges
+       /// </summary>
+       /// <param name="id">id</param>
+       /// <returns>List of bookings</returns>
         public static List<Booking> GetMyPackages(int? id)
         {
             List<Booking> bookings = null;
