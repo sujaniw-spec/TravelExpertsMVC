@@ -18,7 +18,6 @@ variables:
   solution: '**/*.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
-  displaymessage:'Hi Sujani'
 
 steps:
 - task: NuGetToolInstaller@1
