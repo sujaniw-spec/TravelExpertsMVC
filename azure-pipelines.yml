@@ -12,6 +12,7 @@ pr:
 
 pool:
   vmImage: 'windows-latest'
+  
 
 variables:
   solution: '**/*.sln'
@@ -19,6 +20,7 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
+- bash: echo "Hello world"
 - task: NuGetToolInstaller@1
 
 - task: NuGetCommand@2
