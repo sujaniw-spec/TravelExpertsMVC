@@ -18,9 +18,10 @@ variables:
   solution: '**/*.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
+  displaymessage:'Hi Sujani'
 
 steps:
-- bash: echo "Hello world"
+- bash: echo $(displaymessage)
 - task: NuGetToolInstaller@1
 
 - task: NuGetCommand@2
