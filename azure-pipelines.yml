@@ -21,7 +21,6 @@ variables:
   displaymessage:'Hi Sujani'
 
 steps:
-- bash: echo "Hello world"
 - task: NuGetToolInstaller@1
 
 - task: NuGetCommand@2
