@@ -19,6 +19,7 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
+- script: echo hello from the Release build
 - task: NuGetToolInstaller@1
 
 - task: NuGetCommand@2
