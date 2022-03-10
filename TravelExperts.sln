@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31624.102
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelExpertsData", "TravelExpertsData\TravelExpertsData.csproj", "{23E92A6B-8EFC-41E4-A379-D4480540F6A6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TravelExpertsData", "TravelExpertsData\TravelExpertsData.csproj", "{23E92A6B-8EFC-41E4-A379-D4480540F6A6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelExpertsGUI", "TtavelExpertsGUI\TravelExpertsGUI.csproj", "{780D9D8D-3024-43A3-B1A3-E92B7C7D05BE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TravelExpertsGUI", "TtavelExpertsGUI\TravelExpertsGUI.csproj", "{780D9D8D-3024-43A3-B1A3-E92B7C7D05BE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelExpertsDataTests", "TravelExpertsDataTests\TravelExpertsDataTests.csproj", "{FDEC9EE9-F6DE-422F-9389-C6807F7C33CA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{780D9D8D-3024-43A3-B1A3-E92B7C7D05BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{780D9D8D-3024-43A3-B1A3-E92B7C7D05BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{780D9D8D-3024-43A3-B1A3-E92B7C7D05BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDEC9EE9-F6DE-422F-9389-C6807F7C33CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDEC9EE9-F6DE-422F-9389-C6807F7C33CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDEC9EE9-F6DE-422F-9389-C6807F7C33CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDEC9EE9-F6DE-422F-9389-C6807F7C33CA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
