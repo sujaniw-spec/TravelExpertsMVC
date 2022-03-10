@@ -17,6 +17,15 @@ namespace TravelExpertsData.Models.Tests
         {
             int custId = 1;
             Assert.AreEqual(1, custId);
+            System.Console.WriteLine("Ok!");
+        }
+
+        [TestMethod()]
+        public void GetCustomerName()
+        {
+            string customerName = "Sujani";
+            Assert.AreEqual("Sujani", customerName);
+            System.Console.WriteLine("Ok!!");
         }
     }
 }

@@ -7,10 +7,12 @@ namespace TestProject
     public class UnitTest1
     {
         [TestMethod]
-        public void GetCustomerIdTest()
+        public void GetCustomerTest()
         {
             int custId = 1;
-            Assert.Equals(1, custId);
+
+
+            Assert.assertThat(1, custId);
         }
     }
 }
