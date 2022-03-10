@@ -60,7 +60,7 @@ namespace TravelExpertsGUI.Controllers
             }
             catch(Exception e)
             {
-                TempData["Message"] = $"Error in Registration. Please Try again!";
+                TempData["Message"] = $"Error in Registration. Please Try again!{e}";
                 return View();
             }
             //return View();
