@@ -16,7 +16,7 @@ namespace TravelExpertsData.Models.Tests
         public void GetCustomerIdTest()
         {
             int custId = 1;
-            Assert.Equals(1, custId);
+            Assert.AreEqual(1, custId);
         }
     }
 }
