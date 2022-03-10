@@ -27,5 +27,12 @@ namespace TravelExpertsData.Models.Tests
             Assert.AreEqual("Sujani", customerName);
             System.Console.WriteLine("Ok!!");
         }
+
+        [TestMethod()]
+        public void GetCustomerAge()
+        {
+            int age = 30;
+            Assert.IsTrue(age > 20);
+        }
     }
 }
