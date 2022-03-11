@@ -25,7 +25,7 @@ namespace TravelExpertsData.Models.Tests
         {
             string customerName = "Sujani";
             Assert.AreEqual("Sujani", customerName);
-            System.Console.WriteLine("Ok!!");
+            System.Console.WriteLine("Ok!!!");
         }
 
         [TestMethod()]
