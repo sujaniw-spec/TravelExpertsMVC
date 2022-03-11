@@ -34,5 +34,12 @@ namespace TravelExpertsData.Models.Tests
             int age = 30;
             Assert.IsTrue(age > 20);
         }
+
+        [TestMethod()]
+        public void GetCustomerCity()
+        {
+            string custCity = "Calgary";
+            Assert.AreEqual("Calgary",custCity);
+        }
     }
 }
